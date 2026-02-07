@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+background:linear-gradient(135deg,#ffd6e7,#ffeaea);
+}
+
+.page{
+display:none;
+padding:70px 20px;
+}
+
+.active{
+display:block;
+animation:fade 1s;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+h1{ color:#ff2e63; }
+p{ font-size:18px; color:#444; }
+
+button{
+background:#ff2e63;
+color:white;
+border:none;
+padding:14px 20px;
+border-radius:12px;
+font-size:16px;
+margin:10px;
+cursor:pointer;
+}
+
+.confetti{
+position:fixed;
+font-size:20px;
+animation:conf 3s linear forwards;
+}
+
+@keyframes conf{
+0%{transform:translateY(-10px);}
+100%{transform:translateY(100vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9c7f5c0a0b.mp3">
+</audio>
+
+<script>
+let namaKamu = prompt("Nama kamu 😊");
+let namaDia = prompt("Nama dia 💖");
+</script>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+<h1>Hai <span id="dia1"></span> 😆</h1>
+<p>Aku punya sesuatu buat kamu...</p>
+<button onclick="next(2)">Lanjut</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+<h1>Jujur ya</h1>
+<p>Kehadiran kamu bikin hari terasa beda 💕</p>
+<button onclick="next(3)">Lanjut</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+<h1>Kamu tau gak?</h1>
+<p>Kamu itu kayak mood booster 😝</p>
+<button onclick="next(4)">Lanjut</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="p4">
+<h1>Buat <span id="dia2"></span></h1>
+<p>Senyum kamu selalu bikin nyaman 🌸</p>
+<button onclick="next(5)">Lanjut</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="p5">
+<h1>Dari <span id="kamu1"></span></h1>
+<p>Makasih udah hadir dalam cerita hidup aku 💖</p>
+<button onclick="next(6)">Lanjut</button>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="p6">
+<h1>Aku sadar</h1>
+<p>Hal kecil bareng kamu selalu terasa spesial ✨</p>
+<button onclick="next(7)">Lanjut</button>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page" id="p7">
+<h1>Dan...</h1>
+<p>Aku berharap bisa terus bikin kamu senyum 😊</p>
+<button onclick="next(8)">Lanjut</button>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page" id="p8">
+<h1>Pertanyaan penting 😳</h1>
+<p><span id="dia3"></span>, kamu sayang aku gak?</p>
+
+<button onclick="jawabYes()">YES ❤️</button>
+<button id="noBtn" onmouseover="kabur()">NO 😝</button>
+</div>
+
+<script>
+document.getElementById("dia1").innerHTML = namaDia;
+document.getElementById("dia2").innerHTML = namaDia;
+document.getElementById("dia3").innerHTML = namaDia;
+document.getElementById("kamu1").innerHTML = namaKamu;
+
+function next(n){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById("p"+n).classList.add("active");
+}
+
+function jawabYes(){
+alert("Yeay 💖 " + namaDia + " sayang " + namaKamu);
+confetti();
+}
+
+function kabur(){
+let btn=document.getElementById("noBtn");
+btn.style.position="absolute";
+btn.style.left=Math.random()*80+"%";
+btn.style.top=Math.random()*80+"%";
+}
+
+function confetti(){
+for(let i=0;i<40;i++){
+let c=document.createElement("div");
+c.innerHTML="🎉";
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+document.body.appendChild(c);
+}
+}
+</script>
+
+</body>
+</html>
